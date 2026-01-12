@@ -6,6 +6,8 @@
                    s:0,t:1,q:2,p:3};
   const toRad = Math.pi/180;
   const toDeg = 180/Math.pi;
+
+
   
   //Functions
   function parse(v) {
