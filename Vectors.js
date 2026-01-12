@@ -7,6 +7,7 @@
   const toRad = Math.pi/180;
   const toDeg = 180/Math.pi;
 
+  let cache = [];
 
   
   //Functions
@@ -14,9 +15,16 @@
     /*Todo: find a way to make the replace readable 
     without Regex yelling at me :<
     */
+    const preV = cache[v];
+    if (preV) {
+      return preV;
+    }
     if (Array.isArray(v)) return v;
     if (Number.isFinite(v)) return [v];
-    return v.trim().replace(new RegExp("\\[|\\]", "g"),"").split(",").map(Number);
+    const res = v.trim().replace(new RegExp("\\[|\\]", "g"),"").split(",").map(Number);
+    cache.push(res);
+    console.log(cache)
+    return res;
   }
   function toString(array) {
     if (array.length == 1) return array[0];
