@@ -10,6 +10,23 @@
     //```array.length-1``` spot of the array. Scalar versions will be stacked on top so I can add 4 to the item number if there is a scalar.
     //When changing settings, a function will be called to override every function's array with new functions appropriate for the new settings.
 
+    /*ARRAYS*/
+    let ADD = [add1,add2,add3,add4];
+    let SUB = [sub1,sub2,sub3,sub4];
+    let MUL = [mul1,mul2,mul3,mul4,mulScalar1,mulScalar2,mulScalar3,mulScalar4];
+    let DIV = [div1,div2,div3,div4,divScalar1,divScalar2,divScalar3,divScalar4];
+    let COUNT = getVectorCount;
+    let TYPE = getVectorType;
+    let GETITEM = getItem;
+    let DOT = [dot1,dot2,dot3,dot4];
+    let LENGTH = [length1,length2,length3,length4];
+    let NORMALIZE = [normalize1,normalize2,normalize3,normalize4];
+    let DISTANCE = [distance1,distance2,distance3,distance4];
+    let REFLECT = [null,reflect2,reflect3,reflect4];
+    let CROSS = cross3;
+
+    /* FUNCTIONS */
+
     //Add
     function add1(a,b) {
         return [a[0]+b[0]]
