@@ -1,4 +1,3 @@
-
 (async function(Scratch) {
   "use strict";
   //Globals
