@@ -1,0 +1,1 @@
+import * as VectorMath from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorArrayMath"

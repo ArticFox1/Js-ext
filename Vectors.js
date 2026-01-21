@@ -1,3 +1,4 @@
+
 (async function(Scratch) {
   "use strict";
   //Globals
@@ -7,7 +8,7 @@
   const toRad = Math.pi/180;
   const toDeg = 180/Math.pi;
 
-  let cache = [];
+  let cache = new Map;
 
   
   //Functions
@@ -15,19 +16,26 @@
     /*Todo: find a way to make the replace readable 
     without Regex yelling at me :<
     */
-    const preV = cache[v];
+    const preV = cache.get(v);
+    
     if (preV) {
       return preV;
     }
     if (Array.isArray(v)) return v;
     if (Number.isFinite(v)) return [v];
     const res = v.trim().replace(new RegExp("\\[|\\]", "g"),"").split(",").map(Number);
-    cache.push(res);
+    cache.set(v,res);
     console.log(cache)
     return res;
   }
   function toString(array) {
     if (array.length == 1) return array[0];
+    const preString = cache.get(array);
+    if (preString) {
+      return preString;
+    }
+    const str = "[" + array.join(",") + "]";
+    cache.set(str,array);
     return "[" + array.join(",") + "]";
   }
   
@@ -67,14 +75,11 @@
           case(1):
             return [a[0]*b[0]];
           case(2):
-            a = [a,a];
-            break;
+            return [a[0]*b[0],a[0]*b[1]];
           case(3):
-            a = [a,a,a];
-            break;
+            return [a[0]*b[0],a[0]*b[1],a[0]*b[2]];
           case(4):
-            a = [a,a,a,a];
-            break;
+            return [a[0]*b[0],a[0]*b[1],a[0]*b[2],a[0]*b[3]];
       }
     }
     if (b.length==1) {
@@ -82,14 +87,11 @@
           case(1):
             return [a[0]*b[0]];
           case(2):
-            b = [b,b];
-            break;
+            return [b[0]*a[0],b[0]*a[1]];
           case(3):
-            b = [b,b,b];
-            break;
+            return [b[0]*a[0],b[0]*a[1],b[0]*a[2]];
           case(4):
-            b = [b,b,b,b];
-            break;
+            return [b[0]*a[0],b[0]*a[1],b[0]*a[2],b[0]*a[3]];
       }
     }
     const output = [];
@@ -103,18 +105,16 @@
   function div(a,b) {
     const maxLength = Math.max(a.length,b.length);
     if (b.length==1) {
+      const invB = 1/b[0]
       switch(maxLength) {
           case(1):
-            return [a[0]/b[0]];
+            return [a[0]*invB];
           case(2):
-            b = [b,b];
-            break;
+            return [a[0]*invB,a[1]*invB];
           case(3):
-            b = [b,b,b];
-            break;
+            return [a[0]*invB,a[1]*invB,a[2]*invB];
           case(4):
-            b = [b,b,b,b];
-            break;
+            return [a[0]*invB,a[1]*invB,a[2]*invB,a[3]*invB];
       }
     }
     const output = [];
@@ -125,7 +125,7 @@
         output.push(0);
         continue
       }
-      output.push((a[i] ?? 1)/div);
+      output.push((a[i] ?? 0)/div);
     }
     return output;
   }
