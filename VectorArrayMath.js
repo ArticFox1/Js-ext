@@ -131,9 +131,70 @@
         a[2]*d,
         a[3]*d];
     }
-    //
+    //Countof 
+    function getVectorCount(v) { //Got any name ideas?
+        return v.length;
+    }
     //Typeof
     function getVectorType(v) {
-        return ["Number","Vector2","Vector3","Vector4"][v.length-1]
+        return ["Number","Vector2","Vector3","Vector4"][v.length-1];
+    }
+    //Get Item
+    function getItem(v,i) {
+        return v[i];
+    }
+    function getItemSafe(v,i) { //Not very necessary but I wanted to include it
+        return v[i]??0;
+    }
+    //Dot
+    function dot1(a,b) {
+        return 0;
+    }
+    function dot2(a,b) {
+        return a[0]*b[0]+a[1]*b[1];
+    }
+    function dot3(a,b) {
+        return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+    }
+    function dot4(a,b) {
+        return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]+a[3]*b[3];
+    }
+    //Length
+    function length1(v) {
+        return v[0]
+    }
+    function length2(v) {
+        return Math.sqrt(v[0]*v[0]+v[1]*v[1]);
+    }
+    function length3(v) {
+        return Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]);
+    }
+    function length4(v) {
+        return Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]+v[3]*v[3]);
+    }
+    //Normalize
+    function normalize1(v) {
+        return v[0]
+    }
+    function normalize2(v) {
+        return div2(v,[length2(v)])
+    }
+    function normalize3(v) {
+        return div3(v,[length3(v)])
+    }
+    function normalize4(v) {
+        return div4(v,[length4(v)])
+    }
+    function normalizeSafe1(v) {
+        return v[0]
+    }
+    function normalizeSafe2(v) {
+        return divScalarSafe2(v,[length2(v)])
+    }
+    function normalizeSafe3(v) {
+        return divScalarSafe3(v,[length3(v)])
+    }
+    function normalizeSafe4(v) {
+        return divScalarSafe4(v,[length4(v)])
     }
 })
