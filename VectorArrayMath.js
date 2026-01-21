@@ -197,4 +197,33 @@
     function normalizeSafe4(v) {
         return divScalarSafe4(v,[length4(v)])
     }
+    //Distance
+    function distance1(a,b) {
+        return [b[0]-a[0]];
+    }
+    function distance2(a,b) {
+        return length2(sub2(a,b));
+    }
+    function distance3(a,b) {
+        return length3(sub3(a,b));
+    }
+    function distance4(a,b) {
+        return length4(sub4(a,b));
+    }
+    //Cross
+    function cross3(a,b) { //No need for compatibility for any other vectors, nor do I want to add compatibility
+        return [a[1]*b[2]-b[1]*a[2],
+            a[2]*b[0]-b[2]*a[0],
+            a[0]*b[1]-b[0]*a[1],];
+    }
+    //Reflect
+    function reflect2(i,n) {
+        return sub2(i,mul2(n,2*dot2(n,i)));
+    }
+    function reflect3(i,n) {
+        return sub3(i,mul3(n,2*dot3(n,i)));
+    }
+    function reflect4(i,n) {
+        return sub4(i,mul4(n,2*dot4(n,i)));
+    }
 })
