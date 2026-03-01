@@ -24,7 +24,7 @@
     let DISTANCE = [distance1,distance2,distance3,distance4];
     let REFLECT = [null,reflect2,reflect3,reflect4];
     let CROSS = cross3;
-
+    
     /* FUNCTIONS */
 
     //Add

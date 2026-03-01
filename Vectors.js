@@ -1,3 +1,4 @@
+import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorArrayMath"
 (async function(Scratch) {
   "use strict";
   //Globals
@@ -58,14 +59,7 @@
     return output;
   }
   function sub(a,b) {
-    const maxLength = Math.max(a.length,b.length);
-    const output = [];
-
-    for (let i = 0; i < maxLength; i++) {
-      output.push((a[i] ?? 0)-(b[i] ?? 0));
-    }
-
-    return output;
+    return Vector.SUB[]()
   }
   function mul(a,b) {
     const maxLength = Math.max(a.length,b.length);
