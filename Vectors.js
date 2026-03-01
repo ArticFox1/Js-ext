@@ -1,6 +1,32 @@
 (function(Scratch) {
   "use strict";
   //Variables
+
+  //Functions
+  function sum(v) {
+    v.reduce(function (x, y) {
+      return x + y;
+    }, 0)
+    return v
+  }
+  
+
+  //Extension Functions
+  function vec2(v) {
+    return new Float32Array(v)
+  }
+  function vec3(v) {
+    return new Float32Array(v)
+  }
+  function vec4(v) {
+    return new Float32Array(v)
+  }
+  function length(v) {
+    return sum(v)/v.length
+  }
+  function normalize(v) {
+
+  }
   //Extension Class
   class Extension {
     getInfo() {
@@ -51,6 +77,21 @@
             }
           },
           "---",
+          { blockType: Scratch.BlockType.LABEL, text: "Properties" },
+          {
+            opcode: "extLength",
+            text: "length of [V]",
+            disableMonitor: true,
+            blockType: Scratch.BlockType.REPORTER,
+            allowDropAnywhere: false,
+            arguments: {
+              V: {
+                shape: Scratch.BlockShape.SQUARE,
+                type: Scratch.ArgumentType.ANY,
+                exemptFromNormalization: true
+              }
+            }
+          },
           {
             opcode: "extNormal",
             text: "unit of [V]",
@@ -119,13 +160,16 @@
     }
     //Declarations
     extVec2(args) {
-      return new Float32Array([args.X,args.Y]);
+      return vec2([args.X,args.Y])
     }
     extVec3(args) {
-      return new Float32Array([args.X,args.Y,args.Z]);
+      return vec3([args.X,args.Y,args.Z])
     }
     extVec4(args) {
-      return new Float32Array([args.X,args.Y,args.Z,args.W]);
+      return vec4([args.X,args.Y,args.Z,args.W])
+    }
+    extLength(args) {
+      return length(args.V)
     }
     extNormal(args) {
       return args.V
