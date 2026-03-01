@@ -1,6 +1,6 @@
-import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorArrayMath"
-(async function(Scratch) {
+(function(Scratch) {
   "use strict";
+  //Variables
   //Extension Class
   class Extension {
     getInfo() {
@@ -13,35 +13,56 @@ import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorA
           { blockType: Scratch.BlockType.LABEL, text: "Declarations" },
           {
             opcode: "extVec2",
-            text: "Vector2 [X] [Y]",
+            text: "vec2 [X] [Y]",
             disableMonitor: true,
             blockType: Scratch.BlockType.REPORTER,
+            blockShape: Scratch.BlockShape.SQUARE,
+            allowDropAnywhere: false,
             arguments: {
-              X: {"type": "number"},
-              Y: {"type": "number"}
+              X: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true},
+              Y: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true}
             }
           },
           {
             opcode: "extVec3",
-            text: "Vector3 [X] [Y] [Z]",
+            text: "vec3 [X] [Y] [Z]",
             disableMonitor: true,
             blockType: Scratch.BlockType.REPORTER,
+            blockShape: Scratch.BlockShape.SQUARE,
+            allowDropAnywhere: false,
             arguments: {
-              X: {"type": "number"},
-              Y: {"type": "number"},
-              Z: {"type": "number"}
+              X: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true},
+              Y: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true},
+              Z: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true}
             }
           },
           {
             opcode: "extVec4",
-            text: "Vector4 [X] [Y] [Z] [W]",
+            text: "vec4 [X] [Y] [Z] [W]",
             disableMonitor: true,
             blockType: Scratch.BlockType.REPORTER,
+            blockShape: Scratch.BlockShape.SQUARE,
+            allowDropAnywhere: false,
             arguments: {
-              X: {"type": "number"},
-              Y: {"type": "number"},
-              Z: {"type": "number"},
-              W: {"type": "number"}
+              X: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true},
+              Y: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true},
+              Z: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true},
+              W: {type: Scratch.ArgumentType.NUMBER, exemptFromNormalization: true}
+            }
+          },
+          "---",
+          {
+            opcode: "extNormal",
+            text: "unit of [V]",
+            disableMonitor: true,
+            blockType: Scratch.BlockType.REPORTER,
+            allowDropAnywhere: false,
+            arguments: {
+              V: {
+                shape: Scratch.BlockShape.SQUARE,
+                type: Scratch.ArgumentType.ANY,
+                exemptFromNormalization: true
+              }
             }
           },
         ],
@@ -75,7 +96,7 @@ import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorA
                 value: true
               },
               {
-                text: "Magnitude",
+                text: "Length",
                 value: false
               }
             ]
@@ -105,6 +126,9 @@ import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorA
     }
     extVec4(args) {
       return new Float32Array([args.X,args.Y,args.Z,args.W]);
+    }
+    extNormal(args) {
+      return args.V
     }
   }
   
