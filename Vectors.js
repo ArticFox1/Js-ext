@@ -44,143 +44,6 @@ import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorA
               W: {"type": "number"}
             }
           },
-          "---", //Arithmatic
-          { blockType: Scratch.BlockType.LABEL, text: "Arithmetic" },
-          {
-            opcode: "extAdd",
-            text: "[A] + [B]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              A: {type: "string",
-                 defaultValue: "[1,2]"},
-              B: {type: "string",
-                 defaultValue: "[3,4]"}
-            }
-          },
-          {
-            opcode: "extSub",
-            text: "[A] - [B]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              A: {type: "string",
-                 defaultValue: "[2,0]"},
-              B: {type: "string",
-                 defaultValue: "[4,1]"}
-            }
-          },
-          {
-            opcode: "extMul",
-            text: "[A] * [B]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              A: {type: "string",
-                 defaultValue: "[1,0]"},
-              B: {type: "string",
-                 defaultValue: "[4,7]"}
-            }
-          },
-          {
-            opcode: "extDiv",
-            text: "[A] / [B]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              A: {type: "string",
-                 defaultValue: "[2,6]"},
-              B: {type: "string",
-                 defaultValue: "[0,4]"}
-            }
-          },
-          "---", //Properties
-          { blockType: Scratch.BlockType.LABEL, text: "Properties" },
-          {
-            opcode: "extGetItem",
-            text: "Get [ITEM] of [VECTOR]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              ITEM: {menu: "vectorItem",
-                    defaultValue: 0},
-              VECTOR: {type: "string",
-                      defaultValue: "[5,3]"}
-            }
-          },
-          {
-            opcode: "extLength",
-            text: "Length of [VECTOR]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              VECTOR: {type: "string",
-                      defaultValue: "[0,0]"}
-            }
-          },
-          {
-            opcode: "extTypeOf",
-            text: "Type of [VECTOR]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              VECTOR: {type: "string",
-                      defaultValue: "[0,0,0]"}
-            }
-          },
-          "---", //Methods
-          { blockType: Scratch.BlockType.LABEL, text: "Methods" },
-          {
-            opcode: "extDot",
-            text: "[A] dot [B]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              A: {type: "string",
-                 defaultValue: "[1,1]"},
-              B: {type: "string",
-                 defaultValue: "[-1,-1]"}
-            }
-          },
-          {
-            opcode: "extUnitMag",
-            text: "[MENU] of [VECTOR]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              MENU: {menu: "unitMag",
-                    defaultValue: "Unit"},
-              VECTOR: {type: "string",
-                 defaultValue: "[1,1]"}
-            }
-          },
-          "---", //Swizzles
-          { blockType: Scratch.BlockType.LABEL, text: "Swizzles" },
-          {
-            opcode: "extSwizzle",
-            text: "Swizzle [VECTOR] with [PATTERN]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              VECTOR: {type: "string",
-                 defaultValue: "[2,4,6]"},
-              PATTERN: {type: "string",
-                 defaultValue: "yxz"}
-            }
-          },
-          //Todo, add this later
-          /*"---", //Angles
-          { blockType: Scratch.BlockType.LABEL, text: "Angles" },
-          {
-            //opcode: "extSwizzle",
-            text: "Angle of [VECTOR]",
-            disableMonitor: true,
-            blockType: Scratch.BlockType.REPORTER,
-            arguments: {
-              VECTOR: {type: "string",
-                 defaultValue: "[2,5]"},
-            }
-          }*/
         ],
         menus: {
           vectorItem: {
@@ -235,48 +98,13 @@ import * as Vector from "C:/Users/onlin/OneDrive/Documents/GitHub/Js-ext/VectorA
     }
     //Declarations
     extVec2(args) {
-      return vec2(args);
+      return new Float32Array([args.X,args.Y]);
     }
     extVec3(args) {
-      return vec3(args);
+      return new Float32Array([args.X,args.Y,args.Z]);
     }
     extVec4(args) {
-      return vec4(args);
-    }
-    //Arithmatic
-    extAdd(args) {
-      return toString(add(parse(args.A),parse(args.B)));
-    }
-    extSub(args) {
-      return toString(sub(parse(args.A),parse(args.B)));
-    }
-    extMul(args) {
-      return toString(mul(parse(args.A),parse(args.B)));
-    }
-    extDiv(args) {
-      return toString(div(parse(args.A),parse(args.B)));
-    }
-    //Properties
-    extGetItem(args) {
-      return getItem(parse(args.VECTOR),args.ITEM);
-    }
-    extLength(args) {
-      return length(parse(args.VECTOR));
-    }
-    extTypeOf(args) {
-      return typeOf(parse(args.VECTOR));
-    }
-    extDot(args) {
-      return dot(parse(args.A),parse(args.B));
-    }
-    extUnitMag(args) {
-      if (args.MENU) {
-        return toString(unit(parse(args.VECTOR)));
-      }
-      return magnitude(parse(args.VECTOR));
-    }
-    extSwizzle(args) {
-      return toString(swizzle(parse(args.VECTOR),args.PATTERN.toLowerCase()));
+      return new Float32Array([args.X,args.Y,args.Z,args.W]);
     }
   }
   
