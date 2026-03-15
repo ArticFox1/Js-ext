@@ -355,6 +355,22 @@
               }
             }
           },
+          {
+            opcode: "extString",
+            text: "string of [V]",
+            disableMonitor: true,
+            blockType: Scratch.BlockType.REPORTER,
+            blockShape: Scratch.BlockShape.ROUND,
+            allowDropAnywhere: false,
+            arguments: {
+              V: {
+                type: Scratch.ArgumentType.NUMBER,
+                shape: Scratch.BlockShape.SQUARE,
+                defaultValue: 0,
+                exemptFromNormalization: true
+              }
+            }
+          },
 
         ],
         menus: {
@@ -414,9 +430,11 @@
     extLength({V}) {
       return length(V)
     }
-    //Methods
     extNormal({V}) {
       return normalize(V)
+    }
+    extString({V}) {
+      return V.toString()
     }
   }
 
