@@ -350,6 +350,7 @@
             text: "swizzle [ITEMS] of [V]",
             disableMonitor: true,
             blockType: Scratch.BlockType.REPORTER,
+            blockShape: Scratch.BlockShape.SQUARE,
             allowDropAnywhere: false,
             arguments: {
               ITEMS: {
@@ -486,7 +487,8 @@
     }
     //Properties
     extItem({ V, ITEM }) {
-      return V[ITEM]
+      if (!V) return
+      return V.ITEM??0
     }
     extSwiz({ V, ITEMS}) {
       return swizzle(V,ITEMS)
